@@ -1,21 +1,33 @@
-export const matrixGenerator=(count)=>{
+export const matrixGenerator=()=>{
+    let cards=[];
+  let stash=[];
 
-    // Map creation
-    const PlayerMap = new Map();
+  for(var i=0;i<6;i++)
+      {
+                let holder=[];
+          for(var j=0;j<15;j++)
+              {
+                // Generate a number
+                let genNum = Math.floor(Math.random() * (90 - 1 + 1) + 1);
+                // check if stash is empty
+                if(stash.length === 0)
+                  {
+                    // push directly
+                      stash.push(genNum);
+                    holder.push(genNum);
+                  }
+                // if shatsh is not empty
+                // check if generated num exists 
+                else if (!stash.includes(genNum))
+                  {
+                    stash.push(genNum);
+                    holder.push(genNum);
+                  }else{j--;}                
+          }
+        cards.push(holder);
+        holder=[];
+        // console.log("From Matrix Logic - "+Array.from(cards[i]))
 
-    // Columns  = 9
-    const columns = 9;
-
-    // Count = 15 Numbers 
-    const items = 15;
-
-    let activities = [];
-        
-    for(var i=0;i<count;i++)
-    {
-        activities.push([])
-        
-    }
-
-console.log(count);
+  }
+ return cards   
 }

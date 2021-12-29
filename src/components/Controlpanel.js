@@ -13,8 +13,11 @@ let countIp = React.createRef();  // React use ref to get input value
 // logic which handles the shuffle
 const shuffleHandler=(event)=>{
   
-        setPlayercount(countIp.current.value)
+        if(countIp.current.value <= 6)
+        {
+          setPlayercount(countIp.current.value)
          setShuffletoggle(true)
+        }else{alert("You can only add 6 people to get 15 unique numbers")}
 
 
 
@@ -47,7 +50,7 @@ const shuffleHandler=(event)=>{
                 Shuffle
               </button>&nbsp;
       </div>
-      <input type="number" ref={countIp} class="form-control" placeholder="Upto 20" aria-label="Player Count" aria-describedby="basic-addon1" />
+      <input type="number" ref={countIp} class="form-control" placeholder="Upto 6" aria-label="Player Count" aria-describedby="basic-addon1" />
     </div>
   </form>
 </nav>
